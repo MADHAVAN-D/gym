@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITAN FITNESS | Premium Gym in Chennai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Bebas+Neue&amp;display=swap');
+        
+        :root {
+            --neon-red: #ff1e3d;
+            --gold: #facc15;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, transform;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        }
+
+        .glass {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 20px rgb(255 30 61),
+                         0 0 40px rgb(255 30 61);
+        }
+
+        .dumbbell {
+            animation: rotateDumbbell 8s linear infinite;
+            filter: drop-shadow(0 0 30px #facc15);
+        }
+
+        @keyframes rotateDumbbell {
+            from { transform: rotateY(0deg) rotateX(20deg); }
+            to { transform: rotateY(360deg) rotateX(20deg); }
+        }
+
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) rotateX(8deg) rotateY(8deg) scale(1.03);
+            box-shadow: 0 30px 60px -15px rgba(255, 30, 61, 0.4);
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pricing-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.popular::after {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: #facc15;
+            color: black;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 50px;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white overflow-x-hidden">
+    
+    <!-- LOADING INTRO -->
+    <div id="loader" class="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
+        <div class="text-center">
+            <div class="relative mx-auto w-40 h-40 flex items-center justify-center">
+                <!-- 3D Dumbbell -->
+                <div class="text-8xl dumbbell">🏋️</div>
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent animate-[shine_3s_linear_infinite]"></div>
+            </div>
+            <h1 class="title-font text-5xl tracking-widest neon-text mt-8">TITAN FITNESS</h1>
+            <p class="text-zinc-400 mt-3 tracking-widest text-sm">FORGE YOUR LEGACY</p>
+            
+            <div class="mt-12 flex justify-center gap-2">
+                <div class="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+                <div class="w-2 h-2 bg-yellow-400 rounded-full animate-ping" style="animation-delay: 300ms"></div>
+                <div class="w-2 h-2 bg-red-500 rounded-full animate-ping" style="animation-delay: 600ms"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-red-600 rounded-xl flex items-center justify-center text-2xl">🏋️</div>
+                <span class="title-font text-3xl tracking-widest">TITAN</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#services" class="hover:text-red-500">PROGRAMS</a>
+                <a href="#trainers" class="hover:text-red-500">TRAINERS</a>
+                <a href="#plans" class="hover:text-red-500">MEMBERSHIPS</a>
+                <a href="#gallery" class="hover:text-red-500">TRANSFORMATIONS</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/919620440091" target="_blank"
+                   class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl flex items-center gap-2 text-sm font-semibold">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WHATSAPP</span>
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-3xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-bg min-h-screen flex items-center relative">
+        <div class="max-w-7xl mx-auto px-6 pt-24 pb-20 md:pt-32">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-3xl text-sm mb-6 border border-white/20">
+                    <span class="text-yellow-400">●</span>
+                    OPEN 24/7 • T-NAGAR, CHENNAI
+                </div>
+                
+                <h1 class="title-font text-6xl md:text-7xl leading-none tracking-tighter font-black">
+                    TRAIN HARD.<br>
+                    <span class="text-red-500">STAY STRONG.</span>
+                </h1>
+                
+                <p class="mt-6 text-xl text-zinc-300">
+                    Premium fitness facility in Chennai. World-class equipment, elite coaches, and unstoppable community.
+                </p>
+                
+                <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                    <button onclick="document.getElementById('plans').scrollIntoView({ behavior: 'smooth' })"
+                            class="bg-red-600 hover:bg-red-700 py-6 px-10 rounded-3xl text-xl font-bold tracking-wider shadow-2xl shadow-red-900/50">
+                        JOIN NOW — ₹1999/mo
+                    </button>
+                    
+                    <a href="https://wa.me/919620440091" target="_blank"
+                       class="border border-white/50 hover:border-white py-6 px-8 rounded-3xl text-xl font-medium flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        CHAT WITH US
+                    </a>
+                </div>
+                
+                <div class="mt-12 flex items-center gap-8 text-sm">
+                    <div class="flex items-center gap-2">
+                        <span class="text-3xl">⭐</span>
+                        <div>
+                            <div class="font-semibold">4.98</div>
+                            <div class="text-zinc-400 text-xs">From 680+ members</div>
+                        </div>
+                    </div>
+                    <div class="h-8 w-px bg-white/20"></div>
+                    <div>5000+ SQ.FT</div>
+                    <div class="h-8 w-px bg-white/20"></div>
+                    <div>24/7 ACCESS</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating elements -->
+        <div class="hidden lg:block absolute bottom-20 right-12 bg-zinc-900/70 backdrop-blur p-6 rounded-3xl border border-red-500/30">
+            <div class="text-center">
+                <div class="text-5xl">🔥</div>
+                <div class="mt-2 font-bold text-yellow-400">NEXT BATCH</div>
+                <div class="text-2xl font-bold">STARTS IN 3 DAYS</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-red-500 font-medium tracking-widest">TRAIN SMARTER</span>
+                <h2 class="title-font text-5xl md:text-6xl tracking-tighter mt-3">OUR PROGRAMS</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                    <div class="text-6xl mb-6">🏋️</div>
+                    <h3 class="text-3xl font-bold">Personal Training</h3>
+                    <p class="text-zinc-400 mt-4">1-on-1 coaching with certified trainers tailored to your goals.</p>
+                    <div class="mt-8 text-red-500 font-medium">Starting @ ₹3500/month →</div>
+                </div>
+                
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                    <div class="text-6xl mb-6">💪</div>
+                    <h3 class="text-3xl font-bold">Strength Training</h3>
+                    <p class="text-zinc-400 mt-4">Build serious muscle with powerlifting and hypertrophy programs.</p>
+                    <div class="mt-8 text-red-500 font-medium">Starting @ ₹2500/month →</div>
+                </div>
+                
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                    <div class="text-6xl mb-6">🏃</div>
+                    <h3 class="text-3xl font-bold">Weight Loss</h3>
+                    <p class="text-zinc-400 mt-4">Science-backed fat loss programs with nutrition guidance.</p>
+                    <div class="mt-8 text-red-500 font-medium">Starting @ ₹2800/month →</div>
+                </div>
+                
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                    <div class="text-6xl mb-6">🔥</div>
+                    <h3 class="text-3xl font-bold">CrossFit</h3>
+                    <p class="text-zinc-400 mt-4">High-intensity functional training for athletes and warriors.</p>
+                </div>
+                
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                    <div class="text-6xl mb-6">❤️</div>
+                    <h3 class="text-3xl font-bold">Cardio &amp; HIIT</h3>
+                    <p class="text-zinc-400 mt-4">Treadmills, cycles, battle ropes &amp; group classes.</p>
+                </div>
+                
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                    <div class="text-6xl mb-6">🥗</div>
+                    <h3 class="text-3xl font-bold">Nutrition Coaching</h3>
+                    <p class="text-zinc-400 mt-4">Personalized meal plans and ongoing support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAINERS -->
+    <section id="trainers" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-5xl tracking-tighter">MEET OUR COACHES</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="scroll-reveal text-center">
+                    <div class="aspect-square bg-zinc-800 rounded-3xl overflow-hidden mb-6">
+                        <img src="https://picsum.photos/id/64/400/400" alt="Trainer" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold text-xl">Vikram Singh</h4>
+                    <p class="text-red-500">Strength &amp; Powerlifting</p>
+                    <p class="text-xs text-zinc-500 mt-1">8+ years • National Champion</p>
+                </div>
+                
+                <div class="scroll-reveal text-center">
+                    <div class="aspect-square bg-zinc-800 rounded-3xl overflow-hidden mb-6">
+                        <img src="https://picsum.photos/id/201/400/400" alt="Trainer" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold text-xl">Priya Menon</h4>
+                    <p class="text-red-500">Weight Loss &amp; HIIT</p>
+                    <p class="text-xs text-zinc-500 mt-1">Certified Nutritionist</p>
+                </div>
+                
+                <div class="scroll-reveal text-center">
+                    <div class="aspect-square bg-zinc-800 rounded-3xl overflow-hidden mb-6">
+                        <img src="https://picsum.photos/id/201/400/400" alt="Trainer" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold text-xl">Arjun Reddy</h4>
+                    <p class="text-red-500">CrossFit Coach</p>
+                    <p class="text-xs text-zinc-500 mt-1">L2 Certified</p>
+                </div>
+                
+                <div class="scroll-reveal text-center">
+                    <div class="aspect-square bg-zinc-800 rounded-3xl overflow-hidden mb-6">
+                        <img src="https://picsum.photos/id/1005/400/400" alt="Trainer" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold text-xl">Sneha Sharma</h4>
+                    <p class="text-red-500">Yoga &amp; Mobility</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEMBERSHIP PLANS -->
+    <section id="plans" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-yellow-400">CHOOSE YOUR PATH</span>
+                <h2 class="title-font text-5xl tracking-tighter mt-3">MEMBERSHIP PLANS</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic -->
+                <div class="pricing-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold">STARTER</h3>
+                    <div class="mt-6">
+                        <span class="text-6xl font-bold">₹1999</span>
+                        <span class="text-zinc-400">/month</span>
+                    </div>
+                    <ul class="mt-10 space-y-4 text-sm">
+                        <li>✓ 24/7 Gym Access</li>
+                        <li>✓ Group Classes</li>
+                        <li>✓ Locker Access</li>
+                    </ul>
+                    <button class="mt-12 w-full py-5 border border-white/30 hover:bg-white/10 rounded-2xl font-semibold">GET STARTED</button>
+                </div>
+                
+                <!-- Popular -->
+                <div class="pricing-card popular bg-gradient-to-b from-zinc-900 to-black border-2 border-red-500 rounded-3xl p-8 scale-105">
+                    <h3 class="text-2xl font-bold">TITAN PRO</h3>
+                    <div class="mt-6">
+                        <span class="text-6xl font-bold">₹3499</span>
+                        <span class="text-zinc-400">/month</span>
+                    </div>
+                    <ul class="mt-10 space-y-4 text-sm">
+                        <li>✓ Everything in Starter</li>
+                        <li>✓ 8 Personal Training Sessions</li>
+                        <li>✓ Nutrition Consultation</li>
+                        <li>✓ Guest Access (2/month)</li>
+                    </ul>
+                    <button onclick="alert('Thank you! Our team will contact you shortly.')"
+                            class="mt-12 w-full py-5 bg-red-600 hover:bg-red-700 rounded-2xl font-bold text-lg">JOIN TITAN PRO</button>
+                </div>
+                
+                <!-- Annual -->
+                <div class="pricing-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8">
+                    <h3 class="text-2xl font-bold">ANNUAL</h3>
+                    <div class="mt-6">
+                        <span class="text-6xl font-bold">₹2999</span>
+                        <span class="text-zinc-400">/month</span>
+                        <span class="block text-xs text-green-400">(billed yearly)</span>
+                    </div>
+                    <ul class="mt-10 space-y-4 text-sm">
+                        <li>✓ All Pro Benefits</li>
+                        <li>✓ Free Merch Kit</li>
+                        <li>✓ Priority Class Booking</li>
+                    </ul>
+                    <button class="mt-12 w-full py-5 border border-white/30 hover:bg-white/10 rounded-2xl font-semibold">GO ANNUAL</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSFORMATION GALLERY -->
+    <section id="gallery" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="title-font text-5xl text-center tracking-tighter mb-16">REAL TRANSFORMATIONS</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="scroll-reveal rounded-3xl overflow-hidden">
+                    <img src="https://picsum.photos/id/201/600/800" class="w-full h-full object-cover">
+                    <div class="bg-black p-4">
+                        <p class="font-medium">Rahul • -18kg in 5 months</p>
+                    </div>
+                </div>
+                <div class="scroll-reveal rounded-3xl overflow-hidden">
+                    <img src="https://picsum.photos/id/64/600/800" class="w-full h-full object-cover">
+                    <div class="bg-black p-4">
+                        <p class="font-medium">Ananya • -12% body fat</p>
+                    </div>
+                </div>
+                <div class="scroll-reveal rounded-3xl overflow-hidden">
+                    <img src="https://picsum.photos/id/1005/600/800" class="w-full h-full object-cover">
+                    <div class="bg-black p-4">
+                        <p class="font-medium">Karthik • Bench 140kg</p>
+                    </div>
+                </div>
+                <div class="scroll-reveal rounded-3xl overflow-hidden">
+                    <img src="https://picsum.photos/id/201/600/800" class="w-full h-full object-cover">
+                    <div class="bg-black p-4">
+                        <p class="font-medium">Meera • 6-pack in 90 days</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+            <div class="text-center scroll-reveal">
+                <div class="text-6xl mb-6">🏆</div>
+                <h4 class="font-bold text-xl">Certified Coaches</h4>
+                <p class="text-zinc-400 mt-3">NSCA, CrossFit &amp; Nutrition certified professionals</p>
+            </div>
+            <div class="text-center scroll-reveal">
+                <div class="text-6xl mb-6">🏋️</div>
+                <h4 class="font-bold text-xl">Premium Equipment</h4>
+                <p class="text-zinc-400 mt-3">Hammer Strength, Rogue, Life Fitness machines</p>
+            </div>
+            <div class="text-center scroll-reveal">
+                <div class="text-6xl mb-6">🕒</div>
+                <h4 class="font-bold text-xl">24×7 Access</h4>
+                <p class="text-zinc-400 mt-3">Train anytime that suits your schedule</p>
+            </div>
+            <div class="text-center scroll-reveal">
+                <div class="text-6xl mb-6">👥</div>
+                <h4 class="font-bold text-xl">Powerful Community</h4>
+                <p class="text-zinc-400 mt-3">Motivating environment that pushes you further</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="title-font text-6xl tracking-tighter">READY TO BEGIN YOUR TRANSFORMATION?</h2>
+                    <p class="mt-8 text-xl text-zinc-300">Visit us or message us on WhatsApp for a free trial session.</p>
+                    
+                    <div class="mt-12 space-y-8">
+                        <div class="flex items-center gap-6">
+                            <i class="fa-solid fa-phone text-4xl text-red-500"></i>
+                            <div>
+                                <p class="font-bold text-2xl">+91 96204 40091</p>
+                                <p class="text-zinc-400">Call or WhatsApp</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <i class="fa-solid fa-location-dot text-4xl text-red-500"></i>
+                            <div>
+                                <p class="font-bold">No. 12, Habibullah Road</p>
+                                <p class="font-bold">T-Nagar, Chennai - 600017</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/919620440091" target="_blank"
+                       class="mt-16 inline-flex items-center gap-4 bg-green-500 hover:bg-green-600 px-10 py-7 rounded-3xl text-2xl font-bold">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>START FREE TRIAL</span>
+                    </a>
+                </div>
+                
+                <div class="bg-black border border-zinc-700 rounded-3xl p-8 h-fit">
+                    <div class="bg-zinc-800 aspect-video rounded-2xl flex items-center justify-center text-6xl mb-8">
+                        📍
+                    </div>
+                    <p class="text-center text-zinc-400">T-Nagar • Near Pondy Bazaar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-20 border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <span class="title-font text-4xl tracking-widest">TITAN FITNESS</span>
+                </div>
+                
+                <div class="flex gap-8 text-2xl">
+                    <i class="fa-brands fa-instagram hover:text-red-500 cursor-pointer"></i>
+                    <i class="fa-brands fa-youtube hover:text-red-500 cursor-pointer"></i>
+                </div>
+                
+                <div class="text-center md:text-right text-sm text-zinc-500">
+                    © 2026 Titan Fitness • Chennai<br>
+                    <span class="text-xs">Designed with 🔥 for champions</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden fixed inset-0 bg-black z-[999] pt-24 px-8">
+        <div class="flex flex-col gap-8 text-3xl font-medium">
+            <a href="#services" onclick="toggleMobileMenu()" class="py-4">Programs</a>
+            <a href="#trainers" onclick="toggleMobileMenu()" class="py-4">Trainers</a>
+            <a href="#plans" onclick="toggleMobileMenu()" class="py-4">Memberships</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="py-4">Transformations</a>
+        </div>
+    </div>
+
+    <script>
+        // Loader
+        window.onload = () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.transition = "opacity 1.2s ease";
+                loader.style.opacity = "0";
+                setTimeout(() => loader.remove(), 1500);
+            }, 2200);
+        };
+
+        // Tailwind script already included
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Clickable cards
+        console.log('%cTITAN FITNESS Website Loaded Successfully ⚡', 'color:#ff1e3d; font-size:14px; font-family:monospace');
+    </script>
+</body>
+</html>
